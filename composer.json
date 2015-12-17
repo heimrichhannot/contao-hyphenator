@@ -1,0 +1,34 @@
+{
+    "name": "heimrichhannot/contao-hyphenator",
+    "description":"Word-Hyphenation for Contao Front end pages.",
+    "keywords":["contao", "hyphen", "hyphenator"],
+    "type": "contao-module",
+    "homepage":"https://github.com/heimrichhannot/contao-hyphenator",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Heimrich & Hannot",
+            "email":"digitales@heimrich-hannot.de",
+            "homepage":"http://www.heimrich-hannot.de",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/heimrichhannot/contao-hyphenator/issues"
+    },
+    "require": {
+        "contao/core": ">=3.0,<4-dev",
+	    "org_heigl/hyphenator": ">=2.0,<3",
+        "bariew/phpquery": ">=1.0.2"
+    },
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/hyphenator"
+            }
+        }
+    }
+}
