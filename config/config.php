@@ -27,3 +27,11 @@ $GLOBALS['TL_CONFIG']['hyphenator_skipPages'] = array();
  * Hooks
  */
 $GLOBALS['TL_HOOKS']['modifyFrontendPage'][]  = array('HeimrichHannot\Hyphenator\Hooks', 'modifyFrontendPageHook');
+
+/**
+ * Css
+ */
+if(TL_MODE == 'FE')
+{
+	$GLOBALS['TL_USER_CSS']['hyphenator'] = 'system/modules/hyphenator/assets/css/hyphenator.min.css' . (version_compare(VERSION, '3.5', '>=') ? '|static' : '');
+}
