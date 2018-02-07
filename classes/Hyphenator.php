@@ -39,6 +39,13 @@ class Hyphenator extends \Controller
         $h = new \Org\Heigl\Hyphenator\Hyphenator();
         $h->setOptions($o);
 
+        // mask esi tags, otherwise dom crawler will remove them
+        if (version_compare(VERSION, '4.0', '>')) {
+            $strBuffer = preg_replace_callback('#<esi:((?!\/>).*)\s?\/>#', function ($matches) {
+                return '####esi:open####' . \Contao\StringUtil::specialchars($matches[1]) . '####esi:close####';
+            }, $strBuffer);
+        }
+
         $doc = HtmlPageCrawler::create($strBuffer);
 
         $doc->filter(\Config::get('hyphenator_tags'))->each(function ($node, $i) use ($h) {
@@ -63,7 +70,16 @@ class Hyphenator extends \Controller
             return $node;
         });
 
-        return $doc->saveHTML();
+        $strBuffer = $doc->saveHTML();
+
+        // restore esi tags
+        if (version_compare(VERSION, '4.0', '>')) {
+            $strBuffer = preg_replace_callback('/####esi:open####(.*)####esi:close####/', function ($matches) {
+                return '<esi:'. \Contao\StringUtil::decodeEntities($matches[1]) . '/>';
+            }, $strBuffer);
+        }
+
+        return $strBuffer;
     }
 
     private static function getLocaleFromLanguage($strLanguage)

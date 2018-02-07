@@ -23,4 +23,4 @@ hyphenator_skipPages | array | empty | Array of Contao Page Ids, the Hyphenator 
 ## Requirements
 
 * [org_heigl/hyphenator](https://github.com/heiglandreas/Org_Heigl_Hyphenator)
-* [bariew/phpquery](https://github.com/bariew/phpquery)
+* [wa72/htmlpagedom](https://github.com/wasinger/htmlpagedom)
