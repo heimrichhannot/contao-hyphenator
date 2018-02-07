@@ -12,18 +12,16 @@
 /**
  * Register the namespaces
  */
-ClassLoader::addNamespaces(array
-(
-	'HeimrichHannot',
-));
+ClassLoader::addNamespaces([
+    'HeimrichHannot',
+]);
 
 
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
-	// Classes
-	'HeimrichHannot\Hyphenator\Hyphenator' => 'system/modules/hyphenator/classes/Hyphenator.php',
-	'HeimrichHannot\Hyphenator\Hooks'      => 'system/modules/hyphenator/classes/Hooks.php',
-));
+ClassLoader::addClasses([
+    // Classes
+    'HeimrichHannot\Hyphenator\Hyphenator' => 'system/modules/hyphenator/classes/Hyphenator.php',
+    'HeimrichHannot\Hyphenator\Hooks'      => 'system/modules/hyphenator/classes/Hooks.php',
+]);

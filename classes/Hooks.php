@@ -15,9 +15,9 @@ namespace HeimrichHannot\Hyphenator;
 class Hooks extends Hyphenator
 {
 
-	public function modifyFrontendPageHook($strBuffer, $strTemplate)
-	{
-		return static::hyphenate($strBuffer);
-	}
+    public function modifyFrontendPageHook($strBuffer, $strTemplate)
+    {
+        return static::hyphenate($strBuffer);
+    }
 
 }
