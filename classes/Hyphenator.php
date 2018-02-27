@@ -41,8 +41,8 @@ class Hyphenator extends \Controller
 
         // mask esi tags, otherwise dom crawler will remove them
         if (version_compare(VERSION, '4.0', '>')) {
-            $strBuffer = preg_replace_callback('#<esi:((?!\/>).*)\s?\/>#', function ($matches) {
-                return '####esi:open####' . \Contao\StringUtil::specialchars($matches[1]) . '####esi:close####';
+            $strBuffer = preg_replace_callback('#<esi:((?!\/>).*)\s?\/>#sU', function ($matches) {
+                return '####esi:open####' . str_replace('"', '#~~~#', \Contao\StringUtil::specialchars($matches[1])) . '####esi:close####';
             }, $strBuffer);
         }
 
@@ -75,7 +75,7 @@ class Hyphenator extends \Controller
         // restore esi tags
         if (version_compare(VERSION, '4.0', '>')) {
             $strBuffer = preg_replace_callback('/####esi:open####(.*)####esi:close####/', function ($matches) {
-                return '<esi:'. \Contao\StringUtil::decodeEntities($matches[1]) . '/>';
+                return '<esi:'. str_replace('#~~~#', '"',\Contao\StringUtil::decodeEntities($matches[1])) . '/>';
             }, $strBuffer);
         }
 

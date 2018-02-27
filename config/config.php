@@ -32,5 +32,5 @@ $GLOBALS['TL_HOOKS']['modifyFrontendPage'][] = ['HeimrichHannot\Hyphenator\Hooks
  * Css
  */
 if (TL_MODE == 'FE') {
-    $GLOBALS['TL_USER_CSS']['hyphenator'] = 'system/modules/hyphenator/assets/css/hyphenator.min.css' . (version_compare(VERSION, '3.5', '>=') ? '|static' : '');
+    $GLOBALS['TL_USER_CSS']['hyphenator'] = 'system/modules/hyphenator/assets/css/hyphenator.min.css|static';
 }

@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2018-02-27
+
+### Fixed
+- missing `.htaccess` inside assets directory, required by contao 4 in order to create symlink inside `web/system/modules` directory
+
 ## [1.1.1] - 2018-02-07
 
 ### Fixed
