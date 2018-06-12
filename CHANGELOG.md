@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2018-06-12
+
+### Fixed
+- removed file system debugging
+
 ## [1.1.2] - 2018-02-27
 
 ### Fixed
