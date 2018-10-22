@@ -46,6 +46,9 @@ class Hyphenator extends \Controller
             }, $strBuffer);
         }
 
+        // prevent unescape unicode html entities (email obfuscation)
+        $strBuffer = preg_replace('/&(#+[x0-9a-fA-F]+);/', '&_$1;', $strBuffer);
+
         $doc = HtmlPageCrawler::create($strBuffer);
 
         $doc->filter(\Config::get('hyphenator_tags'))->each(function ($node, $i) use ($h) {
@@ -71,6 +74,9 @@ class Hyphenator extends \Controller
         });
 
         $strBuffer = $doc->saveHTML();
+
+        // prevent unescape unicode html entities (email obfuscation)
+        $strBuffer = preg_replace('/&amp;_(#+[x0-9a-fA-F]+);/', '&$1;', $strBuffer);
 
         // restore esi tags
         if (version_compare(VERSION, '4.0', '>')) {
